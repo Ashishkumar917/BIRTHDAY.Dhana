@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday My Love ❤️</title>
-    <!-- Romantic Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Canvas Confetti Library for Fireworks -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         :root {
@@ -119,7 +117,7 @@
             margin-bottom: 20px;
         }
 
-        /* Next Navigation Button (Bottom System) */
+        /* Next Navigation Button */
         .btn-next {
             background: linear-gradient(45deg, var(--primary-pink), #ff416c);
             color: #fff;
@@ -370,7 +368,7 @@
             100% { transform: scale(1.02); color: var(--gold-glow); }
         }
 
-        /* Page 9: 10 Line Special Note Page Styles */
+        /* Page 9: Special Note */
         .special-note-box {
             background: var(--dark-card);
             border: 1px solid var(--gold-glow);
@@ -411,23 +409,20 @@
             align-items: center;
             font-size: 1.3rem;
         }
-        
     </style>
 </head>
 <body>
 
-    <!-- Heart Particles Background -->
     <canvas id="heartCanvas"></canvas>
 
-    <!-- Romantic Song Audio -->
     <audio id="bgMusic" loop preload="auto">
+        <source src="song.mp3" type="audio/mpeg">
         <source src="song.mpeg" type="audio/mpeg">
     </audio>
     <button class="music-control" onclick="toggleMusic()">🎵</button>
 
     <div class="wrapper">
 
-        <!-- PAGE 1: TIMER PAGE -->
         <div class="page active" id="page-1">
             <span class="section-tag">⏳ The Big Day Countdown</span>
             <h2>Counting Every Second</h2>
@@ -443,11 +438,9 @@
             <button class="btn-next" onclick="nextPage(2)">Open Birthday Wish ❤️ ➔</button>
         </div>
 
-        <!-- PAGE 2: BIRTHDAY WISH & PHOTO -->
         <div class="page" id="page-2">
             <span class="section-tag">❤️ Happy Birthday My Love</span>
             <div class="photo-frame">
-                <!-- Image Link Yahan Change Karein -->
                 <img src="mylove.jpg" alt="My Love">
             </div>
             <h1>Happy Birthday, Meri Jaan! ❤️</h1>
@@ -458,7 +451,6 @@
             <button class="btn-next" onclick="nextPage(3)">Let's Cut The Cake 🎂 ➔</button>
         </div>
 
-        <!-- PAGE 3: CAKE CUTTING -->
         <div class="page" id="page-3">
             <span class="section-tag">🎂 Birthday Celebration</span>
             <h2>Make a Wish & Cut The Cake</h2>
@@ -478,7 +470,6 @@
             <button class="btn-next" onclick="nextPage(4)">Why You Are Special 💖 ➔</button>
         </div>
 
-        <!-- PAGE 4: REASONS WHY I LOVE YOU -->
         <div class="page" id="page-4">
             <span class="section-tag">💖 Why You Are Special</span>
             <h2>Reasons Why I Love You</h2>
@@ -519,7 +510,6 @@
             <button class="btn-next" onclick="nextPage(5)">Read Love Letters 💌 ➔</button>
         </div>
 
-        <!-- PAGE 5: LOVE LETTERS & MESSAGES -->
         <div class="page" id="page-5">
             <span class="section-tag">💌 Heartfelt Letters</span>
             <h2>Love Letters For You</h2>
@@ -547,7 +537,6 @@
             <button class="btn-next" onclick="nextPage(6)">See Our Journey 📖 ➔</button>
         </div>
 
-        <!-- PAGE 6: OUR STORY & TIMELINE -->
         <div class="page" id="page-6">
             <span class="section-tag">📖 Our Journey</span>
             <h2>Our Story & Moments</h2>
@@ -573,7 +562,6 @@
             <button class="btn-next" onclick="nextPage(7)">My Promises To You 🤙 ➔</button>
         </div>
 
-        <!-- PAGE 7: MY PROMISES & SURPRISE GIFT -->
         <div class="page" id="page-7">
             <span class="section-tag">🎁 Surprise & Promises</span>
             <h2>Promises For You</h2>
@@ -595,7 +583,6 @@
             </div>
         </div>
 
-        <!-- PAGE 8: SPECIAL "I LOVE YOU DHANA" PAGE (SIRF YAHAN PAR DHANA RAHEGA) -->
         <div class="page" id="page-8">
             <span class="section-tag">💖 Special Endless Love</span>
             <h2>For My Dhana Only ❤️</h2>
@@ -619,7 +606,6 @@
             <button class="btn-next" onclick="nextPage(9)">Read Special Note 💌 ➔</button>
         </div>
 
-        <!-- PAGE 9: SPECIAL 10-LINE HEARTTOUCHING NOTE -->
         <div class="page" id="page-9">
             <span class="section-tag">💌 A Special Note For You</span>
             <h2>From My Heart To Yours</h2>
@@ -646,31 +632,34 @@
 
     <script>
         // 1. MULTI-PAGE NAVIGATION SYSTEM WITH TIMER PROTECTION
-    let currentPage = 1;
-const targetBirthday = new Date("2026-08-31T01:00:00").getTime(); 
+        let currentPage = 1;
+        const targetBirthday = new Date("2026-08-31T00:00:00").getTime(); 
 
-function nextPage(pageNumber) {
-    // Timer check: Jab tak timer baaki hai, next page open nahi hoga
-  const now = new Date().getTime();
-    if (targetBirthday - now > 0 && pageNumber > 1) {
-        alert("Sabar karo meri jaan! ⏳ Timer poora hone ke baad hi surprise open hoga! ❤️");
-        return;
-    }  
+        function nextPage(pageNumber) {
+            const now = new Date().getTime();
+            // Timer check: Timer baaki rehne par alert aayega
+            if (targetBirthday - now > 0 && pageNumber > 1) {
+                alert("Sabar karo meri jaan! ⏳ Timer poora hone ke baad hi surprise open hoga! ❤️");
+                return;
+            }  
 
-    document.getElementById(`page-${currentPage}`).classList.remove('active');
-    document.getElementById(`page-${pageNumber}`).classList.add('active');
-    currentPage = pageNumber;
-    window.scrollTo(0, 0);
+            document.getElementById(`page-${currentPage}`).classList.remove('active');
+            document.getElementById(`page-${pageNumber}`).classList.add('active');
+            currentPage = pageNumber;
+            window.scrollTo(0, 0);
 
-    // Button click karte hi music auto-start ho jayega
-    if(audio.paused) {
-        audio.play().catch(e => console.log("Audio play allowed on click"));
-    }
-}
+            // Page 2 par aate hi confetti celebration
+            if (pageNumber === 2 && typeof confetti === 'function') {
+                confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+            }
 
-        // 2. COUNTDOWN TIMER WITH AUTO-PAGE OPENING
-        // Yahan unki actual birthday date dalein (YYYY-MM-DD)
+            // Click karte hi music shuru hoga
+            if(audio.paused) {
+                audio.play().catch(e => console.log("Audio play permission"));
+            }
+        }
 
+        // 2. COUNTDOWN TIMER (Ab auto-slide nahi hoga, user click karega)
         function updateCountdown() {
             const now = new Date().getTime();
             const difference = targetBirthday - now;
@@ -690,14 +679,6 @@ function nextPage(pageNumber) {
                 document.getElementById('hours').innerText = "00";
                 document.getElementById('minutes').innerText = "00";
                 document.getElementById('seconds').innerText = "00";
-                
-                // TIMER 00:00:00 HOTE HI AUTOMATIC PAGE 2 OPEN HO JAYEGA
-                if(currentPage === 1) {
-                    nextPage(2);
-                    if (typeof confetti === 'function') {
-                        confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
-                    }
-                }
             }
         }
         setInterval(updateCountdown, 1000);
