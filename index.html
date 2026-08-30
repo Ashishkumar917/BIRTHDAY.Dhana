@@ -651,7 +651,11 @@ const targetBirthday = new Date("2026-08-31T00:00:00").getTime();
 
 function nextPage(pageNumber) {
     // Timer check: Jab tak timer baaki hai, next page open nahi hoga
-  
+  const now = new Date().getTime();
+    if (targetBirthday - now > 0 && pageNumber > 1) {
+        alert("Sabar karo meri jaan! ⏳ Timer poora hone ke baad hi surprise open hoga! ❤️");
+        return;
+    }  
 
     document.getElementById(`page-${currentPage}`).classList.remove('active');
     document.getElementById(`page-${pageNumber}`).classList.add('active');
